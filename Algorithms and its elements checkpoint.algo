@@ -1,0 +1,33 @@
+ALGORITHM sentence_stats;
+VAR
+    length, nb_words, nb_vowels, i : INTEGER;
+    sentence : STRING[9000]; /*les plus longues phrases jamais écrites contiennent 800-850 mots et ont été écrites par Victor Hugo et Marcel Proust ;)*/
+BEGIN
+    Write("type a sentence that ends with a .");
+    Read(sentence);
+    
+    i:=0; length:=0; nb_words:=1; nb_vowels:=0;
+    
+    WHILE (sentence[i]<>'.') DO
+        length:=length+1;
+        
+        IF (sentence[i]=' ') THEN
+           nb_words:=nb_words+1;
+        END_IF
+
+        IF (sentence[i]='a' OR sentence[i]='e' OR sentence[i]='i' OR sentence[i]='o' OR sentence[i]='u' OR sentence[i]='y') THEN
+            nb_vowels:=nb_vowels+1;
+        END_IF
+        
+        i:=i+1;
+    END_WHILE
+
+    Write("The length of this sentence (the number of characters in this sentence) is: ");
+    Write(length);
+    Write("The number of words in this sentence is: ");
+    Write(nb_words);
+    Write("The number of vowels in this sentence is: ");
+    Write(nb_vowels);
+END
+/* voici l'implémentation de cet algorithme en JavaScript
+https://pastebin.com/dVfXFA56 */
